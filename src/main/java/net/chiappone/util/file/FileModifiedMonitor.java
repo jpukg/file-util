@@ -9,7 +9,7 @@ import java.util.TimerTask;
  * <pre>
  * TimerTask task = new FileModifiedMonitor( propertyFile ) {
  *
- * 	protected void onChange( File file ) {
+ * 	protected void onChange() {
  *
  * 		// do something, file has been modified
  *    }
@@ -66,10 +66,7 @@ public abstract class FileModifiedMonitor extends TimerTask {
         this.timestamp = timestamp;
     }
 
-    /**
-     * @param file
-     */
-    protected abstract void onChange( File file );
+    protected abstract void onChange();
 
     /*
      * (non-Javadoc)
@@ -82,7 +79,7 @@ public abstract class FileModifiedMonitor extends TimerTask {
 
         if ( getTimestamp() != lastModified ) {
             setTimestamp( lastModified );
-            onChange( getFile() );
+            onChange();
         }
     }
 
