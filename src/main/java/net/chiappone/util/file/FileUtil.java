@@ -3,15 +3,18 @@ package net.chiappone.util.file;
 import java.io.*;
 
 /**
+ * Variety of file utility methods.
+ *
  * @author Kurtis Chiappone
- * @date 10/9/2016
  */
 public class FileUtil {
 
     /**
-     * @param src
-     * @param dest
-     * @throws IOException
+     * Copies source to destination.
+     *
+     * @param src  source stream
+     * @param dest destination file
+     * @throws IOException if errors during stream write or close
      */
     public static void copy( InputStream src, File dest ) throws IOException {
 
@@ -32,9 +35,11 @@ public class FileUtil {
     }
 
     /**
-     * @param src
-     * @param dest
-     * @throws IOException
+     * Copies a source file to destination.
+     *
+     * @param src  source file
+     * @param dest destination file
+     * @throws IOException if errors during stream write or close
      */
     public static void copy( File src, File dest ) throws IOException {
 
@@ -47,7 +52,7 @@ public class FileUtil {
      * Deletes a file or directory. If the given file is a directory, this
      * method will recursively delete child directories/files.
      *
-     * @param f
+     * @param f file to delete
      */
     @SuppressWarnings( "ResultOfMethodCallIgnored" ) public static void delete( File f ) {
 

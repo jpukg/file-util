@@ -4,8 +4,7 @@ import java.io.File;
 import java.util.TimerTask;
 
 /**
- * Monitors a file's last modified date. Example usage:
- * <p>
+ * Monitors a file's last modified date. Example usage:<br><br>
  * <pre>
  * TimerTask task = new FileModifiedMonitor( propertyFile ) {
  *
@@ -18,61 +17,43 @@ import java.util.TimerTask;
  * </pre>
  *
  * @author Kurtis Chiappone
- * @date 10/9/2016
  */
 public abstract class FileModifiedMonitor extends TimerTask {
 
     private File file = null;
     private long timestamp;
 
-    /**
-     * @param file
-     */
     public FileModifiedMonitor( File file ) {
 
         this.file = file;
         this.timestamp = file.lastModified();
     }
 
-    /**
-     * @return the file
-     */
     public File getFile() {
 
         return file;
     }
 
-    /**
-     * @param file the file to set
-     */
     public void setFile( File file ) {
 
         this.file = file;
     }
 
-    /**
-     * @return the timestamp
-     */
     public long getTimestamp() {
 
         return timestamp;
     }
 
-    /**
-     * @param timestamp the timestamp to set
-     */
     public void setTimestamp( long timestamp ) {
 
         this.timestamp = timestamp;
     }
 
+    /**
+     * This method will be called when the file is changed. Override it.
+     */
     protected abstract void onChange();
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.util.TimerTask#run()
-     */
     @Override public final void run() {
 
         long lastModified = getFile().lastModified();
